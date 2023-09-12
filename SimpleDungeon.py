@@ -17,13 +17,13 @@ value=[]
 possibleTreasures = {
     "Golden Ring": [200, 100],
     "Silver Chalice": [70, 60, 110, 80],
-    "Broken Sword": [12, 23, 60, 43],
-    "Crystal Crown": [300, 500, 50, 50,],
+    "Broken Sword": [12, 23, 60, 45],
+    "Crystal Crown": [350, 500, 50, 50,],
     "Pearl Earings": [650, 100, 100, 100,],
     "Sack of Gold": [150],
-    "Shattered Shield": [23, 25, 37, 200],
+    "Shattered Shield": [23, 25, 37, 55],
     "Dusty Book": [81, 20, 120, 150],
-    "Mysterious Orb": [54, 99, 119, 300]
+    "Mysterious Orb": [54, 99, 119, 300],
 }
 
 print("Within the depths of the foreboding dungeon, you, an intrepid adventurer, set forth on a quest to collect treasures concealed in its mysterious depths.")
@@ -66,10 +66,17 @@ for treasure in inventory:
         localValue = random.choice(possibleTreasures[treasure])
         value.append(localValue)
 
-inventory = ", ".join(inventory[:-1]) + " and " + inventory[-1] + "."
+plainInventory = ", a ".join(inventory[:-1]) + " and a " + inventory[-1] + "."
 
-print(inventory)
+print(plainInventory)
 time.sleep(1)
-print("You have exchanged these precious relics, reaping the rewards they hold, for the following sum:")
-time.sleep(1)
-print("$" + str(sum(value)) + ".")
+
+if "Shattered Shield" in inventory and "Broken Sword" in inventory:
+ print("Just as you are on the verge of parting with them, the sword and shield astonishingly meld together, reverting to their original form.")
+ time.sleep(1)
+ print("The value of all your relics is instantly doubled!")
+ print("$" + str(sum(value)*2) + ".")
+else: 
+ print("You have exchanged these precious relics, reaping the rewards they hold, for the following sum:")
+ time.sleep(1)
+ print("$" + str(sum(value)) + ".")
